@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luri AI - Akıllı Asistan</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="manifest" href="manifest.json">
+    <!-- FontAwesome İkonları -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-container" id="appContainer">
+        <!-- Sol Yan Menü (Sidebar) -->
+        <aside class="sidebar">
+            <div class="brand">
+                <img src="images/luri.png" alt="Luri AI Logo">
+            </div>
+            
+            <button class="new-chat-btn" id="newChatBtn">
+                <i class="fa-solid fa-plus"></i> Yeni Sohbet
+            </button>
+
+            <!-- Sohbet Yedekleme ve Yükleme Butonları (İsteğe bağlı kalabilir) -->
+            <div class="chat-backup-actions">
+                <button id="exportBtn" class="backup-btn"><i class="fa-solid fa-download"></i> Kaydet</button>
+                <button id="importBtn" class="backup-btn"><i class="fa-solid fa-upload"></i> Yükle</button>
+                <input type="file" id="fileInput" accept=".json" style="display: none;">
+            </div>
+
+            <div class="chat-history">
+                <p class="history-title">Geçmiş Sohbetler</p>
+                <ul id="chatHistoryList">
+                    <!-- Geçmiş sohbetler buraya dinamik dolacak -->
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Ana Sohbet Alanı -->
+        <main class="main-chat">
+            <!-- Üst Bar -->
+            <header class="chat-header">
+                <div class="model-info">
+                    <span class="model-name">Luri v1.0</span>
+                    <span class="badge">Pro</span>
+                </div>
+            </header>
+
+            <!-- Mesaj Alanı -->
+            <div class="message-container" id="messageContainer">
+                <!-- Mesajlar JS ile yüklenecek -->
+            </div>
+
+            <!-- Mesaj Yazma Alanı -->
+            <div class="input-area">
+                <!-- Yüklenen Görsel Önizleme Kutusu -->
+                <div id="imagePreviewContainer" class="image-preview-container" style="display: none;">
+                    <img id="imagePreview" src="" alt="Önizleme">
+                    <button id="removeImageBtn"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <div class="input-wrapper">
+                    <!-- Görsel Seçme Butonu -->
+                    <button id="uploadBtn" type="button" class="upload-btn" title="Görsel Yükle">
+                        <i class="fa-solid fa-paperclip"></i>
+                    </button>
+                    <input type="file" id="imageInput" accept="image/*" style="display: none;">
+
+                    <input type="text" id="userInput" placeholder="Luri AI ile sohbet edin veya bir görsel paylaşın...">
+                    <button id="sendBtn"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+                <p class="disclaimer">Luri AI hatalar yapabilir. Önemli bilgileri doğrulayın.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+      }
+    </script>
+</body>
+</html>
